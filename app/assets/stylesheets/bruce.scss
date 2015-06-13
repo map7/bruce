@@ -1,8 +1,14 @@
 /* Styling the bar */
 
 .bar {
-    border: 1px solid yellow;
+    border: 1px solid grey;
+    margin-left: 5px;
+    width: 57px;
+    height: 10px;
+}
+
+.percent {
     background: green;
-    width: 60px;
+    width:30%;
     height: 10px;
 }
