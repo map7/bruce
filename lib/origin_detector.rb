@@ -1,6 +1,5 @@
-
 module OriginDetector
-require "tempfile"
+  require "tempfile"
 
   class GemfileParser
     attr_reader :filename
@@ -9,13 +8,20 @@ require "tempfile"
       @filename = filename
     end
 
+    def is_australian?
+      puts "source - #{get_source}"
+      get_source.eql?("AUS")
+    end
+
     def get_source
       begin
         tempfile = Tempfile.new("gemfile")
         FileUtils.cp(@filename, tempfile.path)
-        o = []
-        lines = File.readlines(tempfile) { |line| o = line.split("=")[1] if line.include?("origin")}
-        lines.select { |e| e.include?("origin") }.first.split("=")[1].strip.gsub("\"", "")
+        lines = File.readlines(tempfile)
+        origin_line = lines.select { |e| e.include?("origin") }.first
+        puts "origin line - #{origin_line}"
+        return origin_line.split("=")[1].strip.gsub("\"", "") if origin_line
+        nil
       rescue => e
         puts "error parsing file - #{e.message}"
       end

@@ -1,18 +1,31 @@
-require_relative "origin_detector"
+require_relative "../lib/origin_detector"
 
 describe OriginDetector do
 
+  let(:australian_gemfile) { File.join(File.expand_path("../fixtures", __FILE__), "koalas.gemspec") }
+  let(:not_australian_gemfile) { File.join(File.expand_path("../fixtures", __FILE__), "actionmailer-4.1.8.gemspec") }
+
   describe "#get_source" do
     it "detect AUS origin in gemspec" do
-      test_file = File.join(File.expand_path("../fixtures", __FILE__), "koalas.gemspec")
-      origin_detector = OriginDetector::GemfileParser.new(test_file)
+      origin_detector = OriginDetector::GemfileParser.new(australian_gemfile)
       expect(origin_detector.get_source).to eql("AUS")
     end
 
     it "returns nil when there is no origin in gemspec without origin" do
-      test_file = File.join(File.expand_path("../fixtures", __FILE__), "actionmailer-4.1.8.gemspec")
-      origin_detector = OriginDetector::GemfileParser.new(test_file)
-      expect(origin_detector.get_source).to eql(nil) 
+      origin_detector = OriginDetector::GemfileParser.new(:not_australian_gemfile)
+      expect(origin_detector.get_source).to eql(nil)
+    end
+  end
+
+  describe "#is_australia?" do
+    it "true for australian origin" do
+      origin_detector = OriginDetector::GemfileParser.new(australian_gemfile)
+      expect(origin_detector.is_australian?).to be_true
+    end
+
+    it "true for australian origin" do
+      origin_detector = OriginDetector::GemfileParser.new(not_australian_gemfile)
+      expect(origin_detector.is_australian?).to be_false
     end
   end
 
