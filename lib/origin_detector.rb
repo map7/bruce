@@ -18,12 +18,27 @@ module OriginDetector
         FileUtils.cp(@filename, tempfile.path)
         lines = File.readlines(tempfile)
         origin_line = lines.select { |e| e.include?("origin") }.first
-        puts "origin line - #{origin_line}"
         return origin_line.split("=")[1].strip.gsub("\"", "") if origin_line
         nil
       rescue => e
         puts "error parsing file - #{e.message}"
       end
+    end
+  end
+
+  class AussieDetector
+    attr_reader :directory
+
+    def initialize(directory)
+      @directory = directory
+    end
+
+    def how_australian?
+      gemspecs = Dir.glob("#{@directory}/*.gemspec")
+      total = gemspecs.size
+      aus_gemfiles = gemspecs.inject(0) { |sum, gemfile| GemfileParser.new(gemfile).is_australian? ? sum += 1 : sum }
+      return ((aus_gemfiles.to_f / total.to_f) * 100).round(2) if aus_gemfiles
+      1
     end
   end
 end

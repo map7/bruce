@@ -29,4 +29,21 @@ describe OriginDetector do
     end
   end
 
+  describe OriginDetector::AussieDetector do
+    let(:terribly_un_australian) { File.expand_path( "../fixtures", __FILE__)}
+    let(:quite_australian) { File.expand_path( "../fixtures/aus_spec_gems", __FILE__)}
+
+    describe "#how_australian" do
+
+      it "return the percentage of no australian made gems in directory" do
+        aussie_detector = OriginDetector::AussieDetector.new(terribly_un_australian)
+        expect(aussie_detector.how_australian?).to eql(0.41)
+      end
+
+      it "return the percentage some australian australians in the directory" do
+        aussie_detector = OriginDetector::AussieDetector.new(quite_australian)
+        expect(aussie_detector.how_australian?).to eql(66.67)
+      end
+    end
+  end
 end
