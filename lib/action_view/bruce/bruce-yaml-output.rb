@@ -7,8 +7,12 @@ module Bruce
       attr_reader :percent
 
       def load
-        config = Construct.load File.read(CONFIG_FILE)
-        @percent = config[:percentage]
+        if File.exists?(CONFIG_FILE)
+          config = Construct.load File.read(CONFIG_FILE)
+          @percent = config[:percentage]
+        else
+          @percent = 0
+        end
       end
 
       def save
