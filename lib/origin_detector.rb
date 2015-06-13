@@ -9,7 +9,6 @@ module OriginDetector
     end
 
     def is_australian?
-      puts "source - #{get_source}"
       get_source.eql?("AUS")
     end
 
