@@ -1,9 +1,3 @@
-require "bruce/version"
+require "action_view/bruce/version"
+require "action_view/bruce/railtie" if defined? Rails
 
-module Bruce
-  class Bruce < Rails::Railtie
-    initializer "bruce" do |app|
-      puts "BRUCE"
-    end
-  end
-end
