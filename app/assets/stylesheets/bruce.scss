@@ -1,13 +1,23 @@
 /* Styling the bar */
 
+.box {
+    width: 70px;
+    padding: {left: 5px; right: 5px; top: 8px; bottom: 40px;}
+    border: 3px solid grey;
+    border-radius: 10px;
+}
+
 .bar {
+    background: white;
     border: 1px solid grey;
     margin-left: 5px;
     width: 57px;
     height: 10px;
+    border-radius: 10px;
 }
 
 .percent {
     background: green;
     height: 10px;
+    border-radius: 10px;
 }

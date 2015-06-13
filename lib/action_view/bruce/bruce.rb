@@ -18,7 +18,7 @@ module Bruce
         body += "<div class='bar'><div class='percent' style='width:#{config.percent}%'></div></div>".html_safe
 
         # Wrap everything in a div
-        content_tag(:div, body)
+        content_tag(:div, body, class: 'box')
       end
     end
   end
