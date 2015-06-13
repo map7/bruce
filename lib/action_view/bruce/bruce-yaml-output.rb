@@ -15,10 +15,9 @@ module Bruce
         end
       end
 
-      def save
+      def save(percentage = 0)
         # Create new construct object
-        config = Construct.new
-        config.percentage = 80
+        config = Construct.new({percentage: percentage})
 
         # Produce output.yaml file
         File.open(CONFIG_FILE, 'w') do |file|
