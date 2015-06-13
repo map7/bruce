@@ -27,18 +27,38 @@ module OriginDetector
   end
 
   class AussieDetector
-    attr_reader :directory
+    attr_reader :gemfile
+    attr_accessor :gem_path
 
-    def initialize(directory)
-      @directory = directory
+    def initialize(gemfile, gem_path = nil)
+      @gemfile = gemfile
+      @gem_path = gem_path
     end
 
     def how_australian?
-      gemspecs = Dir.glob("#{@directory}/*.gemspec")
-      total = gemspecs.size
-      aus_gemfiles = gemspecs.inject(0) { |sum, gemfile| GemfileParser.new(gemfile).is_australian? ? sum += 1 : sum }
-      return ((aus_gemfiles.to_f / total.to_f) * 100).round(2) if aus_gemfiles
-      1
+      # get list of gem names in project
+      project_gemfiles = File.readlines(@gemfile).delete_if { |e| e.include?("source")}.map { |line|
+        line.gsub("\"", "'").split("\'")[1]
+      }.compact
+      total_project_gems = project_gemfiles.size
+      # get list of gemspec filenames
+      # gem directory
+      gem_directory =  @gem_path ? @gem_path : ENV['GEM_PATH'].split(':')[0]
+      all_gemspecs = Dir.glob("#{gem_directory}/specifications/*.gemspec")
+      
+      total_australian_gems = all_gemspecs.inject(0) do |sum, gemspec|
+        gem_name = gemspec.split('/').last.split('-')[0]
+        if project_gemfiles.include?(gem_name)
+          GemfileParser.new(gemspec).is_australian? ? sum += 1 : sum
+        else
+          sum
+        end
+        sum
+      end
+
+      return 0.0 if total_project_gems == 0
+      return ((total_australian_gems.to_f / total_project_gems.to_f) * 100).round(2)
     end
   end
+
 end
