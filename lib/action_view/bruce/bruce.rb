@@ -1,8 +1,11 @@
 module Bruce
   module ::ActionView
     module Helpers
+      #
+      # Call the bruce function within your views like so
+      # <%= bruce %>
+      #
       def bruce
-        # "BRUCE has landed"
         image_tag("ozemade.png")
       end
     end
