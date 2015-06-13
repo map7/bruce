@@ -1,3 +1,5 @@
 require "action_view/bruce/version"
-require "action_view/bruce/railtie" if defined? Rails
-
+if defined? Rails
+  require "action_view/bruce/railtie" 
+  require "action_view/bruce/engine"
+end
