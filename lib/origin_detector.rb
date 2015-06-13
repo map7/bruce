@@ -9,6 +9,7 @@ module OriginDetector
     end
 
     def is_australian?
+      puts "source - #{get_source}"
       get_source.eql?("AUS")
     end
 
@@ -16,9 +17,11 @@ module OriginDetector
       begin
         tempfile = Tempfile.new("gemfile")
         FileUtils.cp(@filename, tempfile.path)
-        o = []
-        lines = File.readlines(tempfile) { |line| o = line.split("=")[1] if line.include?("origin")}
-        lines.select { |e| e.include?("origin") }.first.split("=")[1].strip.gsub("\"", "")
+        lines = File.readlines(tempfile)
+        origin_line = lines.select { |e| e.include?("origin") }.first
+        puts "origin line - #{origin_line}"
+        return origin_line.split("=")[1].strip.gsub("\"", "") if origin_line
+        nil
       rescue => e
         puts "error parsing file - #{e.message}"
       end
