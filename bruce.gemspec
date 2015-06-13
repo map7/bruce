@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Michael Pope"]
   spec.email         = ["map7@corsairsolutions.com.au"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Checks out how Aussie your project is.}
+  spec.description   = %q{Calculates the origin of all the gems you use in your project and gives you a percentage how Australian owned your project is.}
+  spec.homepage      = ""
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
