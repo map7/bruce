@@ -1,12 +1,15 @@
-
 module OriginDetector
-require "tempfile"
+  require "tempfile"
 
   class GemfileParser
     attr_reader :filename
 
     def initialize(filename)
       @filename = filename
+    end
+
+    def is_australian?
+      get_source.eql?("AUS")
     end
 
     def get_source
