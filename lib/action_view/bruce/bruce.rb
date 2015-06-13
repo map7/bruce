@@ -11,7 +11,7 @@ module Bruce
 
         # Render the bar graph with the percentage of Australian Gems in your project
         # Use the style width to show a percentage
-        body += "[+++--]" 
+        body += "<div class='bar'>testing</div>".html_safe
 
         # Wrap everything in a div
         content_tag(:div, body)
