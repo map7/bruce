@@ -17,6 +17,8 @@ module Bruce
         # Use the style width to show a percentage
         body += "<div class='bar'><div class='percent' style='width:#{config.percent}%'></div></div>".html_safe
 
+        body += "<div class='desc'>#{config.percent}% Proudly Australian</div>".html_safe
+
         # Wrap everything in a div
         content_tag(:div, body, class: 'box')
       end
