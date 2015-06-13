@@ -3,10 +3,12 @@ require 'construct'
 module Bruce
   module ::ActionView
     class Config
+      CONFIG_FILE = './config/bruce-output.yaml'
       attr_reader :percent
 
       def load
-        @percent = 20
+        config = Construct.load File.read(CONFIG_FILE)
+        @percent = config[:percentage]
       end
 
       def save
@@ -15,7 +17,7 @@ module Bruce
         config.percentage = 80
 
         # Produce output.yaml file
-        File.open('./config/bruce-output.yaml', 'w') do |file|
+        File.open(CONFIG_FILE, 'w') do |file|
           file.puts config.to_yaml
         end
       end
