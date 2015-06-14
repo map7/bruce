@@ -1,4 +1,5 @@
 # coding: utf-8
+# origin: AUS
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'koalas/version'
@@ -12,7 +13,6 @@ Gem::Specification.new do |spec|
   spec.description   = %q{TODO: Evil koalas }
   spec.homepage      = ""
   spec.license       = "MIT"
-  spec.origin        = "AUS"
   spec.latitute      = 34.34034
   spec.longitute     = 118.34334
 

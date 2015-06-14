@@ -17,8 +17,9 @@ module OriginDetector
         tempfile = Tempfile.new("gemfile")
         FileUtils.cp(@filename, tempfile.path)
         lines = File.readlines(tempfile)
-        origin_line = lines.select { |e| e.include?("origin") }.first
-        return origin_line.split("=")[1].strip.gsub("\"", "") if origin_line
+        origin_line = lines.select { |e| e.include?("origin:") }.first
+        # obtain from comment code - # origin: AUS
+        return origin_line.split(":")[1].strip.gsub("\"", "") if origin_line
         nil
       rescue => e
         puts "error parsing file - #{e.message}"
@@ -45,7 +46,7 @@ module OriginDetector
       # gem directory
       gem_directory =  @gem_path ? @gem_path : ENV['GEM_PATH'].split(':')[0]
       all_gemspecs = Dir.glob("#{gem_directory}/specifications/*.gemspec")
-      
+
       total_australian_gems = all_gemspecs.inject(0) do |sum, gemspec|
         gem_name = gemspec.split('/').last.split('-')[0]
         if project_gemfiles.include?(gem_name)
