@@ -17,9 +17,11 @@ module OriginDetector
         tempfile = Tempfile.new("gemfile")
         FileUtils.cp(@filename, tempfile.path)
         lines = File.readlines(tempfile)
-        origin_line = lines.select { |e| e.include?("origin:") }.first
+        origin_line = lines.select { |e| e.include?("\"origin\" =>") }.first
         # obtain from comment code - # origin: AUS
-        return origin_line.split(":")[1].strip.gsub("\"", "") if origin_line
+        # return origin_line.split(":")[1].strip.gsub("\"", "") if origin_line
+        # return origin_line.split('.metadata = ').last.split('if').first if origin_line
+        return (eval line.split('.metadata = ').last.split('if').first)["origin"]
         nil
       rescue => e
         puts "error parsing file - #{e.message}"

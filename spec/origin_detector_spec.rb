@@ -5,6 +5,7 @@ describe OriginDetector do
   let(:australian_gemfile) { File.join(File.expand_path("../fixtures/many_oz_gem_test/specifications", __FILE__), "koalas-0.0.1.gemspec") }
   let(:not_australian_gemfile) { File.join(File.expand_path("../fixtures/one_oz_gem_test/installed_gems/specifications", __FILE__), "actionmailer-4.1.8.gemspec") }
 
+  # "spec.metadata = { \"allowed_push_host\" => \" Set to \'http://mygemserver.com\'\", \"origin\" => \"AUS\" } if blashh"
   describe "#get_source" do
     it "detect AUS origin in gemspec" do
       origin_detector = OriginDetector::GemfileParser.new(australian_gemfile)
