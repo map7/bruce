@@ -40,7 +40,7 @@ module OriginDetector
 
     # get list of gem names in project
     def get_gemfiles
-      File.readlines(@gemfile).delete_if { |e| e.include?("source")}.map { |line|
+      File.readlines(@gemfile).delete_if { |e| e.include?("source") || e.strip.start_with?("#")}.map { |line|
         line.gsub("\"", "'").split("\'")[1]
       }.compact
     end
