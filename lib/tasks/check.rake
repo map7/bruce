@@ -9,6 +9,6 @@ namespace :bruce do
     config = Bruce::Config.new
     result = aussieDetector.how_australian?
     config.save(result) # Save into config/bruce_output.yml
-    puts result
+    puts "\n\n#{result}% Proudly Australian\n\n"
   end
 end
