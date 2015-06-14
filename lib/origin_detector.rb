@@ -67,7 +67,6 @@ module OriginDetector
         else
           sum
         end
-        puts sum
         sum
       end
 
