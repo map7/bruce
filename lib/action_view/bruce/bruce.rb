@@ -1,5 +1,7 @@
 module ActionView
   module Helpers
+    BAD = 10
+    GOOD = 60
     #
     # Call the bruce function within your views like so
     # <%= bruce %>
@@ -12,6 +14,9 @@ module ActionView
       # Render the image
       body = content_tag(:div, image_tag(kanga))
 
+      # Play a little sound
+      body += content_tag(:div, audio_tag(sound, autoplay: true))
+
       # Render the bar graph with the percentage of Australian Gems in your project
       # Use the style width to show a percentage
       body += "<div class='bar'><div class='percent' style='width:#{@config.percent}%'></div></div>".html_safe
@@ -23,12 +28,22 @@ module ActionView
     end
 
     def kanga
-      if @config.percent <= 20
+      if @config.percent <= BAD
         "ozemade-dead.png"
-      elsif @config.percent >= 80
+      elsif @config.percent >= GOOD
         "ozemade-cool.png"
       else
         "ozemade.png"
+      end        
+    end
+
+    def sound
+      if @config.percent <= BAD
+        "bad.wav"
+      elsif @config.percent >= GOOD
+        "legend.wav"
+      else
+        "on_ya_mate.wav"
       end        
     end
   end
