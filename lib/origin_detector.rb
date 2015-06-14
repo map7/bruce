@@ -36,16 +36,27 @@ module OriginDetector
       @gem_path = gem_path
     end
 
-    def how_australian?
-      # get list of gem names in project
-      project_gemfiles = File.readlines(@gemfile).delete_if { |e| e.include?("source")}.map { |line|
+    # get list of gem names in project
+    def get_gemfiles
+      File.readlines(@gemfile).delete_if { |e| e.include?("source")}.map { |line|
         line.gsub("\"", "'").split("\'")[1]
       }.compact
+    end
+
+    # get the GEM directory
+    def gem_directory
+      @gem_path ? @gem_path : ENV['GEM_PATH'].split(':')[0]
+    end
+
+    # Get all the installed gemspec files
+    def all_gemspecs
+      Dir.glob("#{gem_directory}/specifications/*.gemspec")
+    end
+
+    # Find out how Australian our project really is.
+    def how_australian?
+      project_gemfiles = get_gemfiles
       total_project_gems = project_gemfiles.size
-      # get list of gemspec filenames
-      # gem directory
-      gem_directory =  @gem_path ? @gem_path : ENV['GEM_PATH'].split(':')[0]
-      all_gemspecs = Dir.glob("#{gem_directory}/specifications/*.gemspec")
 
       total_australian_gems = all_gemspecs.inject(0) do |sum, gemspec|
         gem_name = gemspec.split('/').last.split('-')[0]
@@ -54,6 +65,7 @@ module OriginDetector
         else
           sum
         end
+        puts sum
         sum
       end
 
