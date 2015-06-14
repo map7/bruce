@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'action_view/bruce/version'
+require 'bruce/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "bruce"
-  spec.version       = ActionView::Bruce::VERSION
+  spec.version       = Bruce::VERSION
   spec.authors       = ["Michael Pope"]
   spec.email         = ["map7@corsairsolutions.com.au"]
 
@@ -21,9 +21,11 @@ Gem::Specification.new do |spec|
 
   if spec.respond_to?(:metadata)
     spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
+    spec.metadata['origin'] = "AUS"
   end
 
   spec.add_development_dependency "bundler", "~> 1.9"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "byebug"
   spec.add_runtime_dependency "construct", "~> 0.1.7"
 end

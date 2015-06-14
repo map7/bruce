@@ -1,11 +1,7 @@
-require 'spec_helper'
+# require 'spec_helper'
 
-describe Bruce do
-  it 'has a version number' do
-    expect(Bruce::VERSION).not_to be nil
-  end
-
-  it 'does something useful' do
-    expect(false).to eq(true)
-  end
-end
+# describe Bruce do
+#   it 'has a version number' do
+#     expect(Bruce::VERSION).not_to be nil
+#   end
+# end
