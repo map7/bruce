@@ -48,6 +48,8 @@ describe OriginDetector do
         aussie_detector = OriginDetector::AussieDetector.new(project_gemfile2, quite_australian)
         expect(aussie_detector.how_australian?).to eql(66.67)
       end
+
     end
+
   end
 end
