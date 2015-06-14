@@ -2,6 +2,8 @@ module ActionView
   module Helpers
     BAD = 15
     GOOD = 60
+    BEST = 100
+    
     #
     # Call the bruce function within your views like so
     # <%= bruce %>
@@ -30,6 +32,8 @@ module ActionView
     def kanga
       if @config.percent <= BAD
         "ozemade-dead.png"
+      elsif @config.percent >= BEST
+        "ozemade100_percent.gif"
       elsif @config.percent >= GOOD
         "ozemade-cool.png"
       else
