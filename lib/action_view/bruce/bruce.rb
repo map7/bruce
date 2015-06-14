@@ -1,6 +1,6 @@
 module ActionView
   module Helpers
-    BAD = 10
+    BAD = 15
     GOOD = 60
     #
     # Call the bruce function within your views like so
