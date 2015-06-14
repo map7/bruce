@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'action_view/bruce/version'
+require 'bruce/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "bruce"
-  spec.version       = ActionView::Bruce::VERSION
+  spec.version       = Bruce::VERSION
   spec.authors       = ["Michael Pope"]
   spec.email         = ["map7@corsairsolutions.com.au"]
 
