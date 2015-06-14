@@ -19,14 +19,13 @@ describe OriginDetector do
 
   describe "#is_australia?" do
     it "true for australian origin" do
-      puts australian_gemfile
       origin_detector = OriginDetector::GemfileParser.new(australian_gemfile)
-      expect(origin_detector.is_australian?).to be_true
+      expect(origin_detector.is_australian?).to eql(true)
     end
 
     it "true for australian origin" do
       origin_detector = OriginDetector::GemfileParser.new(not_australian_gemfile)
-      expect(origin_detector.is_australian?).to be_false
+      expect(origin_detector.is_australian?).to eql(false)
     end
   end
 
