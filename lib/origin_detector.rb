@@ -55,14 +55,17 @@ module OriginDetector
       Dir.glob("#{gem_directory}/specifications/*.gemspec")
     end
 
+    def gem_name(gemspec)
+      gemspec.split('/').last.split('-')[0]
+    end
+
     # Find out how Australian our project really is.
     def how_australian?
       project_gemfiles = get_gemfiles
       total_project_gems = project_gemfiles.size
 
       total_australian_gems = all_gemspecs.inject(0) do |sum, gemspec|
-        gem_name = gemspec.split('/').last.split('-')[0]
-        if project_gemfiles.include?(gem_name)
+        if project_gemfiles.include?(gem_name(gemspec))
           GemfileParser.new(gemspec).is_australian? ? sum += 1 : sum
         else
           sum
