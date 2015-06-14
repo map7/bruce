@@ -6,7 +6,7 @@ module ActionView
     #
     def bruce
       # Get the percentage. 
-      config= ActionView::Config.new
+      config= ::Bruce::Config.new
       config.load
       
       # Render the image

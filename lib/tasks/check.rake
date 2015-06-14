@@ -6,7 +6,7 @@ namespace :bruce do
   task :check => :environment do |t|
     # Call the AussieDetector
     aussieDetector = OriginDetector::AussieDetector.new("#{Rails.root}/Gemfile")
-    config = ActionView::Config.new
+    config = Bruce::Config.new
     config.save(aussieDetector.how_australian?) # Save into config/bruce_output.yml
   end
 end

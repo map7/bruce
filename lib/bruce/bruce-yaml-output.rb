@@ -1,6 +1,6 @@
 require 'construct'
 
-module ActionView
+module Bruce
   class Config
     CONFIG_FILE = './config/bruce-output.yaml'
     attr_reader :percent
