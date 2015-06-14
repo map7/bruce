@@ -55,7 +55,9 @@ module OriginDetector
       Dir.glob("#{gem_directory}/specifications/*.gemspec")
     end
 
+    # Get the gem name from the gemspec file.
     def gem_name(gemspec)
+      # Strip off the path & remove version
       gemspec.split('/').last.split('-')[0]
     end
 
