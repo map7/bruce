@@ -21,7 +21,7 @@ module OriginDetector
         # obtain from comment code - # origin: AUS
         # return origin_line.split(":")[1].strip.gsub("\"", "") if origin_line
         # return origin_line.split('.metadata = ').last.split('if').first if origin_line
-        return (eval line.split('.metadata = ').last.split('if').first)["origin"]
+        return (eval origin_line.split('.metadata = ').last.split('if').first)["origin"] if origin_line
         nil
       rescue => e
         puts "error parsing file - #{e.message}"
