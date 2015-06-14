@@ -31,7 +31,7 @@ module ActionView
 
     def kanga
       if @config.percent <= BAD
-        "ozemade-dead.png"
+        "ozemade-dead.gif"
       elsif @config.percent >= BEST
         "ozemade100_percent.gif"
       elsif @config.percent >= GOOD
