@@ -7,6 +7,8 @@ namespace :bruce do
     # Call the AussieDetector
     aussieDetector = OriginDetector::AussieDetector.new("#{Rails.root}/Gemfile")
     config = Bruce::Config.new
-    config.save(aussieDetector.how_australian?) # Save into config/bruce_output.yml
+    result = aussieDetector.how_australian?
+    config.save(result) # Save into config/bruce_output.yml
+    puts "\n\n#{result}% Proudly Australian\n\n"
   end
 end

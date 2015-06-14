@@ -41,7 +41,7 @@ describe OriginDetector do
 
       it "return the percentage of no australian made gems in directory" do
         aussie_detector = OriginDetector::AussieDetector.new(project_gemfile, terribly_un_australian)
-        expect(aussie_detector.how_australian?).to eql(1.02)
+        expect(aussie_detector.how_australian?).to eql(1.04)
       end
 
       it "return the percentage some australian australians in the directory" do
