@@ -9,22 +9,22 @@ Bruce looks through all the Gems you use in your Rails product or Gem and lets y
 
 Add this line to your application's Gemfile:
 
-    gem 'bruce'
+: gem 'bruce'
 
 And then execute:
 
-    $ bundle
+: $ bundle
 
 
 ** Usage
 
 Run the rake task to create the percentage (remember this has to be ran manually if you update your bundle Gemfile).
 
-    $ rake bruce:install
+: $ rake bruce:install
 
 Add to your project's about screen the placement of the Australian Kangaroo with percentage shown.
 
-    <%= bruce %>
+: <%= bruce %>
 
 ** Development
 
