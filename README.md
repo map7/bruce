@@ -1,6 +1,6 @@
 # Bruce
 
-In accordance with the Government's initiative to document how Australian a product is (Ref: #[http://www.australianmade.com.au/latest-news/2015/remember-the-roo-it%E2%80%99s-time-for-consumers-to-have-their-say-on-food-labelling/](1)) we created Bruce.
+In accordance with the Government's initiative to document how Australian a product is (Ref: [http://www.australianmade.com.au/latest-news/2015/remember-the-roo-it%E2%80%99s-time-for-consumers-to-have-their-say-on-food-labelling/](1)) we created Bruce.
 
 Bruce looks through all the Gems you use in your Rails product or Gem and lets you know how Australia your product is.
 
