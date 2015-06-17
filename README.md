@@ -1,8 +1,9 @@
 # Bruce
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bruce`. To experiment with that code, run `bin/console` for an interactive prompt.
+In accordance with the Government's initiative to document how Australian a product is (Ref: #[http://www.australianmade.com.au/latest-news/2015/remember-the-roo-it%E2%80%99s-time-for-consumers-to-have-their-say-on-food-labelling/](1)) we created Bruce.
 
-TODO: Delete this and the text above, and describe your gem
+Bruce looks through all the Gems you use in your Rails product or Gem and lets you know how Australia your product is.
+
 
 ## Installation
 
@@ -16,13 +17,16 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install bruce
 
 ## Usage
 
-TODO: Write usage instructions here
+Run the rake task to create the percentage (remember this has to be ran manually if you update your bundle Gemfile).
+
+    $ rake bruce:install
+
+Add to your project's about screen the placement of the Australian Kangaroo with percentage shown.
+
+    <%= bruce %>
 
 ## Development
 
